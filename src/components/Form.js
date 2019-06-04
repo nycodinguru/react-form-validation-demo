@@ -11,17 +11,17 @@ const Form = props => {
                 </div>
                 <form id="Contact-form" className="Form" action="" method="Post">
                     <div className="Name-fields">
-                        <input className="First-name" name="firstName" type="text" placeholder="First Name" onChange={props.handleChange}></input>
-                        <input className="Last-name" name="lastName" type="text" placeholder="Last Name" onChange={props.handleChange}></input>
+                        <input className="First-name" name="firstName" type="text" placeholder="First Name" onChange={props.handleChange} value={props.firstName}></input>
+                        <input className="Last-name" name="lastName" type="text" placeholder="Last Name" onChange={props.handleChange} value={props.lastName}></input>
                     </div>
                 <div className="Other-fields">
-                        <input className="Email" name="email" type="text" placeholder="Email" onChange={props.handleChange}></input>
+                        <input className="Email" name="email" type="email" placeholder="Email" onChange={props.handleChange} value={props.email}></input>
                         <div id="Email"></div>
                        
-                        <textarea id="Message" name="message" placeholder="Type your message here..." onChange={props.handleChange}></textarea>
+                        <textarea id="Message" name="message" placeholder="Type your message here..." onChange={props.handleChange} value={props.message}></textarea>
                        
                         <div className="Count">
-                            <span id="Count">{props.count}</span>/{props.charLimit}
+                            <span id="Count" >{props.count}</span>/{props.charLimit}
                         </div>
                 </div>
                     <div className="Button-parent">

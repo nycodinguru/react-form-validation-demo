@@ -56,8 +56,6 @@ export default class FormContainer extends Component {
     validate(name, count, e) {
         const messageField = document.getElementById('Message');
         const countText = document.getElementById('Count');
-        const invalidChars = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '0', '+', ' ', '0', '1', '2', '3', '4', '5', '6','7', '8', '9', '/', '\\', '?', '>', '<', ':', ';', 
-    '"', '|', '{', '}', '|', '.', '_', '+', '='];
 
         if (name !== 'message' && count === 0) {
             document.querySelector(`input[name=${name}]`).classList.add('Invalid-field');
@@ -75,12 +73,12 @@ export default class FormContainer extends Component {
             }
         }
         if (name === 'firstName' || name === 'lastName') {
-            for (let i = 0; i < invalidChars.length; i++){
-                if (e.target.value.includes(invalidChars[i])){
+            if (/\W+|\d+|\_/gm.test(e.target.value)){
                     document.querySelector(`input[name=${name}]`).classList.add('Invalid-field');
                     this.setState({ invalidChars: true});
-                } else { this.setState({ invalidChars: false});}
-            }
+            } else { 
+                document.querySelector(`input[name=${name}]`).classList.remove('Invalid-field');
+                this.setState({ invalidChars: false});}
         }
         if (name === 'message') {
             if (this.state.message.length < this.state.charLimit){
